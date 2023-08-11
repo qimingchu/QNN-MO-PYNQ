@@ -79,7 +79,7 @@ help:
 	@printf "Meta Targets:\n"
 	@printf "\tall\n"
 	@printf "\tclean\n"
-	@printf "\treset_xlnk\n\n"
+# @printf "\treset_xlnk\n\n"
 
 	@printf "Options:\n"
 	@printf "\tCROSS_COMPILE\t\t- Set cross compiling prefix\n"
@@ -126,8 +126,8 @@ output/app_hw.elf output/lib_hw.so : $(obj_linking) $(obj_linking_hw) $(app)
 	$(CROSS_COMPILE)$(CXX) $(CXXFLAGS) -pthread -o $(XILINX_QNN_ROOT)/network/$@ $(app) $(obj_linking) $(obj_linking_hw) $(lib_linking) $(lib_linking_hw)
 
 
-reset_xlnk:
-	echo "import pynq.xlnk; xlnk = pynq.Xlnk(); xlnk.xlnk_reset();" | python3.6
+# reset_xlnk:
+# echo "import pynq.xlnk; xlnk = pynq.Xlnk(); xlnk.xlnk_reset();" | python3.6
 
 .clean_part:
 	@$(eval TARGETS := $(shell find $(XILINX_QNN_ROOT)/ -type f -name "Makefile" -not -path $(MYSELF)))
