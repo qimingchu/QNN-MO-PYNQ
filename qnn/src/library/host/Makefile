@@ -37,8 +37,8 @@ CXXFLAGS += -O2
 INCLUDES += -I$(XILINX_QNN_ROOT)/library/rapidjson/include
 INCLUDES += -I$(XILINX_QNN_ROOT)/library/driver
 
-ifdef VIVADOHLS_INCLUDE_PATH
-INCLUDES += -I$(VIVADOHLS_INCLUDE_PATH)
+ifdef VITIS_INCLUDE_PATH
+INCLUDES += -I$(VITIS_INCLUDE_PATH)
 endif
 
 obj-o = $(patsubst %.cpp,%.o,$(wildcard *.cpp))

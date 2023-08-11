@@ -56,7 +56,7 @@ if 'bdist_wheel' in sys.argv or 'install' in sys.argv:
     subprocess.check_output(["make", "-j2", "-C", my_path + "qnn/src/network/", "lib_hw"])
     shutil.copy2(my_path + "qnn/src/network/output/lib_hw.so", my_path + "qnn/libraries/"+PLATFORM)
 
-#    if os.environ.get('VIVADOHLS_INCLUDE_PATH') is not None:
+#    if os.environ.get('VITIS_INCLUDE_PATH') is not None:
 #        print("Building software libraries...")
 #        os.remove(my_path + "qnn/libraries/lib_sw_W1A2.so")
 #        os.remove(my_path + "qnn/libraries/lib_sw_W1A3.so")

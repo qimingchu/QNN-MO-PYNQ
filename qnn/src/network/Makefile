@@ -83,7 +83,7 @@ help:
 
 	@printf "Options:\n"
 	@printf "\tCROSS_COMPILE\t\t- Set cross compiling prefix\n"
-	@printf "\tVIVADOHLS_INCLUDE_PATH\t- Set HLS include path for sw implementations\n"
+	@printf "\tVITIS_INCLUDE_PATH\t- Set HLS include path for sw implementations\n"
 	@printf "\tNOZIP\t\t\t- Do not compile zip capabilites in\n\n"
 
 	@printf "Requirements:\n"

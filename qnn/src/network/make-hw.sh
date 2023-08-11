@@ -42,7 +42,7 @@ NETWORK=$1
 PLATFORM=$2
 MODE=$3
 PATH_TO_VIVADO=$(which vivado)
-PATH_TO_VIVADO_HLS=$(which vivado_hls)
+PATH_TO_VIVADO_HLS=$(which vitis_hls)
 
 if [ -z "$XILINX_QNN_ROOT" ]; then
     echo "Need to set XILINX_QNN_ROOT"
@@ -78,7 +78,7 @@ HLS_IP_REPO="$HLS_OUT_DIR/sol1/impl/ip"
 
 HLS_REPORT_PATH="$HLS_OUT_DIR/sol1/syn/report/BlackBoxJam_csynth.rpt"
 REPORT_OUT_DIR="$QNN_PATH/output/report/$NETWORK-$PLATFORM"
-VIVADO_HLS_LOG="$QNN_PATH/output/hls-syn/vivado_hls.log"
+VIVADO_HLS_LOG="$QNN_PATH/output/hls-syn/vitis_hls.log"
 
 VIVADO_SCRIPT_DIR=$XILINX_QNN_ROOT/library/script/$PLATFORM
 VIVADO_SCRIPT=$VIVADO_SCRIPT_DIR/make-vivado-proj.tcl
@@ -108,15 +108,15 @@ if [[ ("$MODE" == "h") || ("$MODE" == "a")  ]]; then
   mkdir -p $HLS_OUT_DIR
   mkdir -p $REPORT_OUT_DIR
   OLDDIR=$(pwd)
-  echo "Calling Vivado HLS for hardware synthesis..."
+  echo "Calling Vitis HLS for hardware synthesis..."
   cd $HLS_OUT_DIR/..
   vivado_hls -f $HLS_SCRIPT -tclargs $NETWORK $PLATFORM $HLS_SRC_DIR $PLATFORM_PART $TARGET_CLOCK $NETWORK_JSON
   if cat $VIVADO_HLS_LOG | grep "ERROR"; then
-    echo "Error in Vivado_HLS"
+    echo "Error in Vitis_HLS"
     exit 1	
   fi
   if cat $VIVADO_HLS_LOG | grep "CRITICAL WARNING"; then
-    echo "Critical warning in Vivado_HLS"
+    echo "Critical warning in Vitis_HLS"
     exit 1	
   fi
   cat $HLS_REPORT_PATH | grep "Utilization Estimates" -A 20 > $REPORT_OUT_DIR/hls.txt

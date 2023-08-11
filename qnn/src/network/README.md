@@ -8,7 +8,7 @@ The software represents the interface to the neuronal network on the fpga. There
     This dependency gets automatically resolved if an internet connection is available, otherwise clone the library from https://github.com/Tencent/rapidjson
 
 * VIVADO HLS Libraries for the pure software implemenation  
-    The user should copy the include folder from VIVADO HLS on the PYNQ board (in windows in vivado-path/Vivado_HLS/201x.y/include, /vivado-path/Vidado_HLS/201x.y/include in unix) and set the environment variable **VIVADOHLS_INCLUDE_PATH** to the location in which the folder has been copied.  
+    The user should copy the include folder from VIVADO HLS on the PYNQ board (in windows in vitis-path/Vitis_HLS/201x.y/include, /vitis-path/Vitis_HLS/201x.y/include in unix) and set the environment variable **VITIS_INCLUDE_PATH** to the location in which the folder has been copied.  
 
 ### Build Steps
 
